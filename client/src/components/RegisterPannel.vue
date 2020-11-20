@@ -1,5 +1,5 @@
 <template>
-    <div class="login-pannel">
+    <div class="register-pannel">
         <input
             type="email"
             name="email"
@@ -12,10 +12,16 @@
             v-model="password"
             placeholder="password"
             class="input" required/>
+            <input
+            type="password"
+            name="password"
+            v-model="confirm_password"
+            placeholder="Confirm password"
+            class="input" required/>
             <div v-html="error" class="error"></div>
         <button
-            @click="auth"
-            :class="{disabled : !can_login}">
+            @click="register"
+            :class="{disabled : !can_register}">
             Register
         </button>
     </div>
@@ -24,41 +30,43 @@
 <script>
 import axios from 'axios'
 export default {
-    name: 'Register',
+    name: 'RegisterPannel',
     data() {
         return {
             email: '',
             password: '',
-            can_login:false,
+            confirm_password: '',
+            can_register:false,
             error: null
         }
     },
     methods: {
-        auth() {
-            axios.post('http://localhost:8081/authentication', {
+        register() {
+            axios.post('http://localhost:8081/register', {
                 email: this.email,
-                password: this.password
+                password: this.password,
+                confirmPassword: this.confirm_password
             })
-            .then(() => console.log("connected"))
+            .then(() => console.log('registered'))
             .catch(error => {
                 this.error = error.response.data.message
             })
         },
-        canLogin() {
-            if(this.password != '' && this.email != '')
-                this.can_login = true;
+        canRegister() {
+            if(this.password != '' && this.email != '' && this.confirm_assword != '')
+                this.can_register = true;
             else
-                this.can_login = false;
+                this.can_register = false;
         }
     },
     beforeUpdate () {
-        this.canLogin();
+        this.canRegister();
     },
 }
 </script>
 
 <style lang="scss" scoped>
-.login-pannel {
+.register-pannel {
     width: 60%;
     height: 40vh;
     margin: auto;

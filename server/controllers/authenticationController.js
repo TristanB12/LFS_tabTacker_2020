@@ -4,7 +4,7 @@ exports.validUserAuth = (req, res) => {
     User.findOne({email : req.body.email})
         .then(user => {
             if(!user)
-                return res.status(401).json({
+                return res.status(400).json({
                     message: 'Adress mail not found'
                 })
             if(user.password === req.body.password)
@@ -12,7 +12,7 @@ exports.validUserAuth = (req, res) => {
                     message: 'Connected'
                 })
             else {
-                return res.status(401).json({
+                return res.status(400).json({
                     message: 'wrong password'
                 })
             }

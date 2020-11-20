@@ -6,7 +6,7 @@
             </div>
             <div class="auth-links">
                 <router-link to="/login">Login</router-link>
-                <a href="">Sign Up</a>
+                <router-link to="/register">Register</router-link>
             </div>
         </header>
     </div>

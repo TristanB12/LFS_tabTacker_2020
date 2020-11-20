@@ -1,23 +1,23 @@
 <template>
-    <div class="login-view">
-        <h1>Login to your account</h1>
-        <p>you don't have an account ? click <router-link to="/register">here</router-link></p>
-        <LoginPannel></LoginPannel>
+    <div class="register-view">
+        <h1>Register</h1>
+        <p>Create an account for free and have unlimited access to more than 1000000 tabs</p>
+        <RegisterPannel></RegisterPannel>
     </div>
 </template>
 
 <script>
-import LoginPannel from '@/components/LoginPannel.vue';
+import RegisterPannel from '@/components/RegisterPannel.vue';
     export default {
-        name: 'LoginView',
+        name: 'RegisterVue',
         components: {
-            LoginPannel,
+            RegisterPannel,
         },
     }
 </script>
 
 <style lang="scss" scoped>
-.login-view{
+.register-view{
     width: 70%;
     margin: auto;
     margin-top: 4vh;
@@ -28,7 +28,8 @@ import LoginPannel from '@/components/LoginPannel.vue';
         text-align: center;
     }
     p {
-        font-size: .9em;
+        font-size: 1em;
+        margin-top: 3vh;
         font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-weight: 100;
         text-align: center;
