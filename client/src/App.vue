@@ -1,22 +1,30 @@
 <template>
   <div id="app">
+    <HeaderBar></HeaderBar>
     <router-view/>
   </div>
 </template>
 
 <script>
+import HeaderBar from '@/components/HeaderBar.vue';
 export default {
-  name: 'App'
+  name:'App',
+  components: {
+    HeaderBar,
+  },
 }
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Oswald, sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 </style>

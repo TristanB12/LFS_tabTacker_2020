@@ -1,15 +1,24 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Register from '@/components/Register'
+import VueRouter from 'vue-router'
+import DefaultView from '@/views/DefaultView.vue'
+import LoginView from '@/views/LoginView.vue'
+Vue.use(VueRouter)
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    name: 'default',
+    component: DefaultView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component:  LoginView
+  }
+]
 
-export default new Router({
-  routes: [
-    {
-      path: '/register',
-      name: 'register',
-      component: Register
-    }
-  ]
+const router = new VueRouter({
+  routes
 })
+
+export default router
