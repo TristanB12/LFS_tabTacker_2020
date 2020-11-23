@@ -47,7 +47,7 @@ export default {
                 password: this.password,
                 confirmPassword: this.confirm_password
             })
-            .then(() => console.log('registered'))
+            .then(() => console.log('connected'))
             .catch(error => {
                 this.error = error.response.data.message
             })
