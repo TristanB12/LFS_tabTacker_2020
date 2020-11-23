@@ -4,7 +4,7 @@ import DefaultView from '@/views/DefaultView.vue'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import SongsView from '@/views/SongsView.vue'
-
+import CreateSongView from '@/views/CreateSongView.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +28,11 @@ const routes = [
     path: '/songs',
     name: 'songs',
     component: SongsView
+  },
+  {
+    path: '/create',
+    name: 'create',
+    component: CreateSongView
   }
 ]
 

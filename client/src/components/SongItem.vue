@@ -1,5 +1,6 @@
 <template>
     <div class="song-item">
+        <img :src="songItem.albumImage" alt="">
         <p>{{ songItem.title }}</p>
         <p>{{ songItem.artist }}</p>
         <p>{{ songItem.album }}</p>
@@ -27,6 +28,10 @@
     border-radius: 1em;;
     margin: 1vh 0px;
     padding: 2vh 0px;
+    align-items: center;
+    img {
+        max-width: 10%;
+    }
     p {
         color: black;
         font-size: 1.4em;
