@@ -42,12 +42,15 @@ export default {
     },
     methods: {
         register() {
-            axios.post('http://localhost:8081/register', {
+            axios.post('http://localhost:8081/authentication/register', {
                 email: this.email,
                 password: this.password,
                 confirmPassword: this.confirm_password
             })
-            .then(() => console.log('connected'))
+            .then(() => {
+                console.log('registered');
+                this.$router.push({name: 'login'})
+                })
             .catch(error => {
                 this.error = error.response.data.message
             })
