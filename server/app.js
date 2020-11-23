@@ -19,8 +19,10 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-const authRoutes = require('./routes/authentication');
+const authRoutes = require('./routes/authentication')
+const songsRoutes = require('./routes/songs')
 
-app.use('/authentication', authRoutes);
+app.use('/authentication', authRoutes)
+app.use('/songs', songsRoutes)
 
 module.exports = app;
