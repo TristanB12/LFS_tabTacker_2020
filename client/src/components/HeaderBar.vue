@@ -4,9 +4,13 @@
             <div class="main-title">
                 <router-link to="/">TabTracker</router-link>
             </div>
-            <div class="auth-links">
+            <div class="auth-links" v-if="!$store.state.isUserloggedIn">
                 <router-link to="/login">Login</router-link>
                 <router-link to="/register">Register</router-link>
+            </div>
+            <div class="logged-in-links" v-else>
+                <router-link to="/songs">Songs</router-link>
+                <router-link to="/login" @click.native="logout">Logout</router-link>
             </div>
         </header>
     </div>
@@ -14,7 +18,13 @@
 
 <script>
     export default {
-        name: 'HeaderBar'
+        name: 'HeaderBar',
+        methods: {
+            logout() {
+                this.$store.dispatch('setToken', null)
+                this.$store.dispatch('setUser', null)
+            }
+        },
     }
 </script>
 
@@ -45,7 +55,7 @@
         }
     }
 }
-.auth-links {
+.auth-links, .logged-in-links {
     flex: 1;
     display: flex;
     justify-content: space-around;

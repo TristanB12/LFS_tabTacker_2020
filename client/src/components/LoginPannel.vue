@@ -39,7 +39,11 @@ export default {
                 email: this.email,
                 password: this.password
             })
-            .then(() => console.log("connected"))
+            .then(user => {
+                console.log("connected");
+                this.$store.dispatch('setToken', user.data.token)
+                this.$store.dispatch('setUser', user.data.user)
+            })
             .catch(error => {
                 this.error = error.response.data.message
             })
