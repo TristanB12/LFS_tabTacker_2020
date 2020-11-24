@@ -1,7 +1,7 @@
 <template>
-    <div class="songs-view" @click="createSong">
+    <div class="songs-view">
         <h1>Songs</h1>
-        <button class="add-song">
+        <button class="add-song" @click="createSong">
             <img src="@/assets/plus_button.png" alt="">
             <p>Add a song</p>
         </button>
