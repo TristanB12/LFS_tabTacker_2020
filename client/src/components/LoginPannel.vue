@@ -43,6 +43,7 @@ export default {
                 console.log("connected");
                 this.$store.dispatch('setToken', user.data.token)
                 this.$store.dispatch('setUser', user.data.user)
+                this.$router.push({name: 'songs'})
             })
             .catch(error => {
                 this.error = error.response.data.message

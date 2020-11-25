@@ -31,7 +31,7 @@
 <style lang="scss" scoped>
 .header-container {
     background-color: #e67e22;
-    height: 8vh;
+    height: 8%;
     box-shadow: 0px 0px 5px black;
 
     header {

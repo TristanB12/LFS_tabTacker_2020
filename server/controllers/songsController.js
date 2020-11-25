@@ -21,6 +21,11 @@ module.exports = {
                 message: 'your song has been added'
             }))
             .catch(error => res.status(500).json(error))
+    },
+    getSongDetails(req, res) {
+        Song.findOne({_id: req.params.songId})
+            .then(song => res.status(200).json({songDetails: song}))
+            .catch(error => res.status(400).json({error}))
     }
 }
 

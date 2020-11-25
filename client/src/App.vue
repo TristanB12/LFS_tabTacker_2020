@@ -16,13 +16,17 @@ export default {
 </script>
 
 <style>
+body {
+  height: 100vh;
+}
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 #app {
   font-family: Oswald, sans-serif;
+  height: 100%;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
