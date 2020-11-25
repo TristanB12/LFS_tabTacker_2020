@@ -73,7 +73,7 @@ import axios from 'axios'
                 axios.post('http://localhost:8081/songs', {
                     ...this.song_to_create
                 })
-                    .then(() => console.log('song created'))
+                    .then(() => this.$router.push({name: 'songs'}))
                     .catch(error => console.log(error))
             }
         },

@@ -19,7 +19,7 @@
         },
         methods: {
             isContentAllFilled() {
-                if(this.tabs != '' && this.lyrics != '')
+                if(this.tab != '' && this.lyrics != '')
                     this.$emit('content-state', {
                         state:  true,
                         content: {
