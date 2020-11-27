@@ -35,6 +35,8 @@ export default {
     },
     methods: {
         auth() {
+            if(this.can_login == false)
+                return;
             axios.post('http://localhost:8081/authentication/login', {
                 email: this.email,
                 password: this.password
@@ -43,7 +45,7 @@ export default {
                 console.log("connected");
                 this.$store.dispatch('setToken', user.data.token)
                 this.$store.dispatch('setUser', user.data.user)
-                this.$router.push({name: 'songs'})
+                this.$router.push("/songs")
             })
             .catch(error => {
                 this.error = error.response.data.message

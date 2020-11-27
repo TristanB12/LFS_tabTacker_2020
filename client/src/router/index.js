@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 import DefaultView from '@/views/DefaultView.vue'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
@@ -28,22 +29,24 @@ const routes = [
   {
     path: '/songs',
     name: 'songs',
-    component: SongsView
+    component: SongsView,
+    meta: {requiresAuth: true}
   },
   {
     path: '/create',
     name: 'create',
-    component: CreateSongView
+    component: CreateSongView,
+    meta: {requiresAuth: true}
   },
   {
     path: '/song/:songId',
     name: 'song',
-    component: SongDetailsView
+    component: SongDetailsView,
+    meta: {requiresAuth: true}
   }
 ]
 
 const router = new VueRouter({
   routes
 })
-
 export default router

@@ -1,10 +1,13 @@
 <template>
     <div class="songs-view">
         <h1>Songs</h1>
-        <button class="add-song" @click="createSong">
-            <img src="@/assets/plus_button.png" alt="">
-            <p>Add a song</p>
-        </button>
+        <div class="song-actions">
+            <button class="add-song" @click="createSong">
+                <img src="@/assets/plus_button.png" alt="">
+                <p>Add a song</p>
+            </button>
+            <SearchSong @filter-song="filterSong"></SearchSong>
+        </div>
         <div class="songs-card">
             <SongItem v-for="song in songs" :key="song._id" :songItem="song"></SongItem>
         </div>
@@ -13,12 +16,14 @@
 
 <script>
 import SongItem from '@/components/SongItem.vue';
+import SearchSong from '@/components/SearchSong.vue';
 import axios from  'axios';
 
     export default {
         name: 'SongsView',
         components: {
             SongItem,
+            SearchSong,
         },
         data() {
             return {
@@ -35,6 +40,16 @@ import axios from  'axios';
             },
             createSong() {
                 this.$router.push({name: 'create'})
+            },
+            filterSong(payload) {
+                axios.post('http://localhost:8081/songs/filter', {
+                    filterType: payload.filter_type,
+                    filterContent: payload.filter_content
+                })
+                .then(response => {
+                    this.songs = response.data.songs;
+                })
+                .catch(error => console.log(error))
             }
         },
         mounted () {
@@ -54,11 +69,15 @@ h1 {
     text-align: center;
     margin: auto;
 }
-
-.add-song {
-    width: 10%;
-    display: flex;
+.song-actions {
+    width: 40%;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.add-song {
+    width: 30%;
+    display: flex;
     padding: .5em 1em;
     align-items: center;
     border: 3px solid #e67e22;

@@ -26,6 +26,40 @@ module.exports = {
         Song.findOne({_id: req.params.songId})
             .then(song => res.status(200).json({songDetails: song}))
             .catch(error => res.status(400).json({error}))
+    },
+    filterSongs(req, res) {
+        switch (req.body.filterType) {
+            case 'title':
+                Song.find({title: req.body.filterContent})
+                    .then(songs => res.status(200).json({
+                        songs: songs
+                    }))
+                    .catch(error => req.status(500).json(error))
+                break;
+            case 'artist':
+                Song.find({artist: req.body.filterContent})
+                    .then(songs => res.status(200).json({
+                        songs: songs
+                    }))
+                    .catch(error => req.status(500).json(error))
+                break;
+            case 'album':
+                Song.find({album: req.body.filterContent})
+                    .then(songs => res.status(200).json({
+                        songs: songs
+                    }))
+                    .catch(error => req.status(500).json(error))
+                break;
+            case 'genre':
+                Song.find({genre: req.body.filterContent})
+                    .then(songs => res.status(200).json({
+                        songs: songs
+                    }))
+                    .catch(error => req.status(500).json(error))
+                break;
+            default:
+                break;
+        }
     }
 }
 
